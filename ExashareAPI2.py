@@ -85,13 +85,13 @@ class ExashareAPI:
         return self.result
     
     def Request(self, **kwargs):
-        param = '?version=0.01'
+        param = '?version=0.02'
         for key, value in kwargs.items():
             if param:
                 param += '&' + key + '=' + value
             else:
                 param += '?' + key + '=' + value
-        url = 'http://exashare.com/cgi-bin/xapi.cgi'
+        url = 'http://exashare.com/api'
         url += param if param else ''
         response = urllib2.urlopen(url)
         self.result = json.loads(response.read().decode('utf8'))
